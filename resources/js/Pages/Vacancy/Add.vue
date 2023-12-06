@@ -29,7 +29,7 @@
 
                             <div>
                                 <InputLabel for="status" value="Status" />
-                                <select id="status" v-model="form.status" 
+                                <select id="status" v-model="form.status"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full">
                                     <option value="1">Active</option>
                                     <option value="0">Inactive</option>
@@ -94,11 +94,15 @@ defineProps({
     },
 });
 const currentDate = new Date().toISOString().split('T')[0];
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+const tomorrowDate = tomorrow.toISOString().split('T')[0];
+
 const form = useForm({
     job_id: '',
     status: '1',
     start_date: currentDate,
-    end_date: '',
+    end_date: tomorrowDate,
     description: '',
 });
 
